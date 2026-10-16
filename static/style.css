@@ -1,21 +1,21 @@
 body {
-    background: #0f172a;
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
     height: 100vh;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #e2e8f0;
 }
 .glass-card {
-    background: rgba(30, 41, 59, 0.7);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 40px;
-    width: 380px;
+    width: 400px;
     text-align: center;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
@@ -37,7 +37,7 @@ input:focus {
 .progress-container {
     width: 95%;
     height: 8px;
-    background: #334155;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     margin: 25px auto 15px auto;
     overflow: hidden;
@@ -46,17 +46,21 @@ input:focus {
     height: 100%;
     width: 0%;
     border-radius: 4px;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease;
+    transition: width 0.4s ease, background-color 0.4s ease;
 }
 #result {
-    margin-top: 10px;
+    margin-top: 15px;
     font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    min-height: 30px;
 }
 #feedback-text {
-    font-size: 13px;
-    color: #94a3b8;
+    font-size: 14px;
+    color: #ff4d4d;
     margin-top: 5px;
+    text-align: center;
+    display: block;
     min-height: 20px;
 }
