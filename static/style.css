@@ -62,5 +62,6 @@ input:focus {
     margin-top: 5px;
     text-align: center;
     display: block;
+    width: 100%;
     min-height: 20px;
 }
