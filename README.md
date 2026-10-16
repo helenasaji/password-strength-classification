@@ -1,6 +1,16 @@
 # 🔐 AI Password Strength Classifier
-![App Screenshot](app_screenshot.png)
 A machine learning-powered web application that analyzes password strength in real-time. Developed as a final-year BCA minor project, this tool combines a custom mathematical feature-engineering pipeline with a lightweight Flask backend and a modern Glassmorphism user interface.
+
+## 📸 Application Preview
+
+**Catching Common/Weak Passwords:**
+![Weak Password Demo](demo-weak.jpg)
+
+**Evaluating Medium Passwords:**
+![Medium Password Demo](demo-medium.jpg)
+
+**Validating Strong Passwords:**
+![Strong Password Demo](demo-strong.jpg)
 
 ## ✨ Features
 * **Real-Time AI Analysis:** Grades passwords instantly as you type.
