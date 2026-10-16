@@ -1,0 +1,62 @@
+body {
+    background: #0f172a;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e2e8f0;
+}
+.glass-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+input {
+    width: 90%;
+    padding: 14px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    outline: none;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+input:focus {
+    border: 1px solid #3b82f6
+}
+.progress-container {
+    width: 95%;
+    height: 8px;
+    background: #334155;
+    border-radius: 4px;
+    margin: 25px auto 15px auto;
+    overflow: hidden;
+}
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 4px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease;
+}
+#result {
+    margin-top: 10px;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+#feedback-text {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-top: 5px;
+    min-height: 20px;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Strength Classifier</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="glass-card">
+        <h2> Password Strength Classifier</h2>
+        <input type="text" id="pwdInput" placeholder="Type a Password..." oninput="checkStrength()">
+
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-fill"></div>
+        </div>
+        <div id="result">Waiting for input...</div>
+    </div>
+
+    <div id="result">Ready</div>
+    <div id="feedback-text"></div>
+</div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
