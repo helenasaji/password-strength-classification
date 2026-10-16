@@ -34,7 +34,7 @@ During the Data Science phase, two models were trained and evaluated:
 **Model Selection:** While Random Forest is highly robust, Logistic Regression was explicitly chosen for the final production deployment. Because the engineered features (entropy, length, character counts) established clear, linear mathematical thresholds, Logistic Regression achieved a perfect score with a significantly smaller memory footprint and faster inference time, making it the optimal choice for a web API.
 
 ## Project Structure
-''' text
+``` text
 password_strength_classification/
 ├── data/
 │   └── processed/engineered_passwords.csv
@@ -52,7 +52,7 @@ password_strength_classification/
 ├── app.py
 ├── requirements.txt
 └── vercel.json
-'''
+```
 
 ## 👩‍💻 Author
 Helena Saji
