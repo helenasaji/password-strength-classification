@@ -4,13 +4,13 @@ A machine learning-powered web application that analyzes password strength in re
 ## 📸 Application Preview
 
 **Catching Common/Weak Passwords:**
-![Weak Password Demo](demo-weak.jpg)
+![Weak Password Demo](images/demo-weak.png)
 
 **Evaluating Medium Passwords:**
-![Medium Password Demo](demo-medium.jpg)
+![Medium Password Demo](images/demo-medium.png)
 
 **Validating Strong Passwords:**
-![Strong Password Demo](demo-strong.jpg)
+![Strong Password Demo](images/demo-strong.png)
 
 ## ✨ Features
 * **Real-Time AI Analysis:** Grades passwords instantly as you type.
