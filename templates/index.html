@@ -1,20 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>AI Password Strength Classifier</title>
-    <link rel="stylesheet" href="/static/style.css?v=2">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050b1d">
+  <title>Password Strength Classifier</title>
+  <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
-    <div class="glass-card">
-        <h2>Password Strength Classifier</h2>
-        <input type="text" id="pwdInput" placeholder="Type a password..." oninput="checkStrength()">
-        <div class="progress-container">
-            <div id="progress-bar" class="progress-fill"></div>
+  <div class="background-glow glow-top"></div>
+  <div class="background-glow glow-right"></div>
+  <img src="/static/images/neon-wave.png" class="wave-background" alt="" aria-hidden="true">
+  <header class="site-header">
+    <a href="#" class="brand">
+      <img src="/static/images/branch-shield.png" class="brand-icon" alt="">
+      <span class="brand-name">
+        Password <span class="purple">Strength</span> Classifier
+      </span>
+    </a>
+    <p class="header-tagline">
+      Stronger Passwords
+      <span class="divider">|</span>
+      Safer You
+    </p>
+  </header>
+  <main class="main-content">
+    <section class="classifier-card">
+      <p class="eyebrow">
+        CHECK <span>•</span> ANALYZE <span>•</span> STAY SAFE
+      </p>
+      <h1>
+        Password<br>
+        <span class="purple">Strength</span> Classifier
+      </h1>
+
+      <p class="intro">
+        Enter your password below to check its strength<br class="desktop-break">
+        and get instant feedback.
+      </p>
+      <div class="password-field">
+        <img src="/static/images/white-lock.png" class="input-lock" alt="">
+        
+        <input type="text" id="pwdInput" placeholder="Type a password..." autocomplete="new-password" spellcheck="false" aria-label="Type a password">
+        
+        <button type="button" id="togglePassword" class="eye-button" aria-label="Hide password">
+          <img src="/static/images/white-eye.png" alt="">
+        </button>
+      </div>
+
+      <div class="strength-row">
+        <div class="progress-container" role="progressbar" aria-label="Password strength" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="progress-bar" class="progress-fill"></div>
         </div>
-        <div id="result"></div>
-        <div id="feedback-text"></div>
-    </div> 
-    <script src="/static/script.js"></script>
+        <span id="percent">0%</span>
+      </div>
+      <div class="tips-panel" aria-live="polite">
+        <img src="/static/images/purple-bulb.png" class="bulb-icon" alt="">
+        
+        <div class="tips-content">
+          <p id="result">Tips will appear here...</p>
+          <p id="feedback-text"></p>
+          <p id="crack-time" style="color: #a065ff; font-size: 13px; font-weight: 600; margin-top: 5px;"></p>
+        </div>
+      </div>
+    </section>
+    <img src="/static/images/neon-lock.png" class="hero-lock" alt="Glowing blue and purple padlock">
+  </main>
+  <script src="/static/script.js?v=2"></script>
 </body>
 </html>

@@ -14,6 +14,28 @@ def contains_weak_patterns(password):
     weak_substrings = ['123', '1234', 'password', 'qwerty', 'admin', 'abc']
     return any(sub in pwd_lower for sub in weak_substrings)
 
+def get_crack_time(password):
+    pool = 0
+    if any(c.islower() for c in password): pool += 26
+    if any(c.isupper() for c in password): pool += 26
+    if any(c.isdigit() for c in password): pool += 10
+    if any(not c.isalnum() for c in password): pool += 32
+
+    if pool == 0 or len(password) == 0:
+        return "Instantly"
+
+    combinations = pool ** len(password)
+    guesses_per_second = 100_000_000_000
+    seconds = combinations / guesses_per_second
+
+    if seconds < 1: return "Instantly"
+    elif seconds < 60: return f"{int(seconds)} seconds"
+    elif seconds < 3600: return f"{int(seconds/60)} minutes"
+    elif seconds < 86400: return f"{int(seconds/3600)} hours"
+    elif seconds < 31536000: return f"{int(seconds/86400)} days"
+    elif seconds < 3153600000: return f"{int(seconds/31536000)} years"
+    else: return "Centuries"
+
 def extract_features(password):
     length = len(password)
     lower = sum(1 for c in password if c.islower())
@@ -44,14 +66,21 @@ def predict():
         return jsonify({'error': 'No password provided'})
 
     if contains_weak_patterns(password):
-        return jsonify({'strength': 0, 'feedback': 'Contains common sequence'})
+        return jsonify({
+            'strength': 0, 
+            'feedback': 'Contains common sequence',
+            'crack_time': get_crack_time(password)
+        })
 
     features = extract_features(password)
     features_scaled = scaler.transform(features)
     prediction = model.predict(features_scaled)[0]
 
-    return jsonify({'strength': int(prediction), 'feedback': 'AI Analyzed'})
+    return jsonify({
+        'strength': int(prediction), 
+        'feedback': 'AI Analyzed',
+        'crack_time': get_crack_time(password)
+    })
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
