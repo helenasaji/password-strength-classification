@@ -68,12 +68,12 @@ body {
   z-index: -1;
   top: 40.3%;
   left: 0;
-  display: block;
-  width: 100%;
+  width: 100vw;          
+  min-width: 1200px;      
   height: auto;
   pointer-events: none;
   user-select: none;
-  mix-blend-mode: screen; /* Add this exact line */
+  mix-blend-mode: screen; 
 }
 .site-header {
   position: relative;
