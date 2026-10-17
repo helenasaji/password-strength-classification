@@ -24,6 +24,7 @@ Classes used:
 The dataset is uniformly distributed across the three classifications to ensure balanced model training and prevent bias.
 
 ## Methodology
+```
 Raw Password Input
 ↓
 Heuristic Override Check (Common Sequences)
@@ -37,7 +38,7 @@ Logistic Regression Model Prediction
 Strength Classification (Weak/Medium/Strong)
 ↓
 Dynamic UI Progress Bar Update
-
+```
 ## Technologies
 * Python
 * Flask
