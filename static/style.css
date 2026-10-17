@@ -154,10 +154,14 @@ body {
   background: rgba(20, 25, 45, 0.35); 
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(132, 148, 255, 0.25); 
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.2), 
+    0 0 50px rgba(93, 58, 255, 0.25);
+    
   border-radius: 26px; 
 }
+
 .eyebrow {
   margin: 0 0 18px;
   color: #b7c9f5;
