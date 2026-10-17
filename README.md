@@ -92,6 +92,7 @@ password_strength_classification/
 ├── app.py
 ├── requirements.txt
 └── vercel.json
+```
 
 ## 👩‍💻 Author
 Helena Saji
