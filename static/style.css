@@ -150,17 +150,13 @@ body {
   min-height: 586px;
   padding: 50px 50px 42px;
   text-align: center;
-  border: 1px solid rgba(54, 83, 255, 0.83);
-  border-radius: 26px;
-  background: linear-gradient(
-    135deg,
-    rgba(5, 14, 37, 0.95),
-    rgba(5, 12, 32, 0.92)
-  );
-  box-shadow:
-    0 20px 65px rgba(0, 0, 0, 0.18),
-    inset 0 0 45px rgba(26, 53, 130, 0.09);
-  backdrop-filter: blur(9px);
+  
+  background: rgba(20, 25, 45, 0.35); 
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 26px; 
 }
 .eyebrow {
   margin: 0 0 18px;
