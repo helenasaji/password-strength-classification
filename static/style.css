@@ -73,6 +73,7 @@ body {
   height: auto;
   pointer-events: none;
   user-select: none;
+  mix-blend-mode: screen; /* Add this exact line */
 }
 .site-header {
   position: relative;
