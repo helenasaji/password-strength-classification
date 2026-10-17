@@ -102,7 +102,7 @@ async function checkStrength() {
     }
 
   } catch (error) {
-    if (requestId !== latestRequest) {s
+    if (requestId !== latestRequest) {
       return;
     }
     resultText.textContent = "Unable to analyze right now";

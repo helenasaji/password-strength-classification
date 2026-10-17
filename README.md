@@ -56,9 +56,9 @@ The system produces:
 * A sleek Glassmorphism web interface
 
 **Application Preview:**
-* **Catching Common/Weak Passwords:** ![Weak Password Demo](images/demo-weak.jpg)
-* **Evaluating Medium Passwords:** ![Medium Password Demo](images/demo-medium.jpg)
-* **Validating Strong Passwords:** ![Strong Password Demo](images/demo-strong.jpg)
+* **Catching Common/Weak Passwords:** ![Weak Password Demo](images/demo-weak.png)
+* **Evaluating Medium Passwords:** ![Medium Password Demo](images/demo-medium.png)
+* **Validating Strong Passwords:** ![Strong Password Demo](images/demo-strong.png)
 
 ## Limitations
 The system evaluates mathematical complexity and common structural patterns. It does not currently cross-reference inputs with live breached password databases (e.g., Have I Been Pwned API) for active threat detection.
