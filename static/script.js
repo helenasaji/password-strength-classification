@@ -91,8 +91,9 @@ async function checkStrength() {
     resultText.textContent = level.label;
     resultText.style.color = level.color;
     progressFill.style.width = level.width;
-    progressFill.style.backgroundColor = level.color;
+    progressFill.style.background = level.color; 
     percentText.textContent = level.percent;
+
     progressContainer.setAttribute("aria-valuenow", level.percent.replace("%", ""));
     feedbackText.textContent = data.feedback === "AI Analyzed" ? "" : (data.feedback || "");
     if (data.crack_time === "Instantly") {
