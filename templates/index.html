@@ -4,118 +4,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Password Strength Classifier</title>
+
+  <meta name="title" content="Password Strength Classifier">
+  <meta name="description" content="Check your password strength and get instant feedback.">
   <meta name="theme-color" content="#0b0914">
 
-  <title>Vesper — Design System</title>
+  <meta property="og:title" content="Password Strength Classifier">
+  <meta property="og:description" content="Check your password strength and get instant feedback.">
+  <meta property="og:image" content="https://password-strength-classification.vercel.app/static/images/preview.jpg">
+  <meta property="og:url" content="https://password-strength-classification.vercel.app/">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://password-strength-classification.vercel.app/static/images/preview.jpg">
+  <meta property="twitter:url" content="https://password-strength-classification.vercel.app/">
+  <meta property="twitter:title" content="Password Strength Classifier">
+  <meta property="twitter:description" content="Check your password strength and get instant feedback.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
 
-  <main class="canvas" id="canvas">
+  <div class="background-glow glow-top"></div>
+  <div class="background-glow glow-bottom"></div>
 
-    <!-- Top navigation -->
-    <header class="topbar">
+  <header class="site-header">
+    <a href="#" class="brand">
+      <span class="brand-icon" aria-hidden="true">◇</span>
 
-      <div class="brand">
-        <span class="brand-dot"></span>
-        <span>VESPER</span>
-        <span class="topbar-separator">·</span>
-        <span class="brand-label">DESIGN SYSTEM</span>
-      </div>
+      <span class="brand-name">
+        Password <span class="purple">Strength</span> Classifier
+      </span>
+    </a>
 
-      <div class="version-label">
-        <span>DARK</span>
-        <span>·</span>
-        <span>V1.0</span>
-      </div>
+    <p class="header-tagline">
+      Stronger Passwords <span class="divider">|</span> Safer You
+    </p>
+  </header>
 
-    </header>
+  <main class="main-content">
 
-    <!-- Main hero -->
-    <section class="hero">
+    <section class="classifier-card">
 
-      <h1 class="hero-title">Vesper</h1>
-
-      <p class="hero-description">
-        A calm, <strong>deep-dark</strong> interface system —
-        darkness as a material, lit<br class="desktop-break">
-        from beneath by a soft iris-violet aurora.
+      <p class="eyebrow">
+        CHECK <span>•</span> ANALYZE <span>•</span> STAY SAFE
       </p>
+
+      <h1>
+        Password<br>
+        <span class="purple">Strength</span> Classifier
+      </h1>
+
+      <p class="intro">
+        Enter your password below to check its strength<br class="desktop-break">
+        and get instant feedback.
+      </p>
+
+      <div class="password-field">
+
+        <span class="input-lock" aria-hidden="true">♙</span>
+
+        <input
+          type="password"
+          id="pwdInput"
+          placeholder="Type a password..."
+          autocomplete="new-password"
+          spellcheck="false"
+          aria-label="Type a password"
+        >
+
+        <button
+          type="button"
+          id="togglePassword"
+          class="eye-button"
+          aria-label="Show password"
+          aria-pressed="false"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/>
+            <circle cx="12" cy="12" r="2.8"/>
+          </svg>
+        </button>
+
+      </div>
+
+      <div class="strength-row">
+
+        <div
+          class="progress-container"
+          role="progressbar"
+          aria-label="Password strength"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <div id="progress-bar" class="progress-fill"></div>
+        </div>
+
+        <span id="percent">0%</span>
+
+      </div>
+
+      <div class="tips-panel" aria-live="polite">
+
+        <span class="bulb-icon" aria-hidden="true">✧</span>
+
+        <div class="tips-content">
+          <p id="result">Tips will appear here...</p>
+          <p id="feedback-text"></p>
+
+          <p id="crack-time" class="crack-time"></p>
+        </div>
+
+      </div>
 
     </section>
 
-    <!-- Bottom controls -->
-    <footer class="bottom-bar">
-
-      <div class="palette" aria-label="Choose an accent color">
-
-        <button
-          class="swatch swatch-1"
-          data-color="#0b0914"
-          aria-label="Midnight"
-          title="Midnight"
-        ></button>
-
-        <button
-          class="swatch swatch-2"
-          data-color="#171421"
-          aria-label="Charcoal"
-          title="Charcoal"
-        ></button>
-
-        <button
-          class="swatch swatch-3"
-          data-color="#282238"
-          aria-label="Dark violet"
-          title="Dark violet"
-        ></button>
-
-        <button
-          class="swatch swatch-4 active"
-          data-color="#7047ff"
-          aria-label="Iris violet"
-          title="Iris violet"
-        ></button>
-
-        <button
-          class="swatch swatch-5"
-          data-color="#b6a2ff"
-          aria-label="Lavender"
-          title="Lavender"
-        ></button>
-
-        <button
-          class="swatch swatch-6"
-          data-color="#f4f1ff"
-          aria-label="Soft white"
-          title="Soft white"
-        ></button>
-
-      </div>
-
-      <button
-        class="type-specimen"
-        id="fontToggle"
-        type="button"
-        aria-label="Change typography specimen"
-        title="Change typography specimen"
-      >
-        <span class="type-aa">Aa</span>
-        <span class="type-label" id="fontLabel">GEIST</span>
-      </button>
-
-    </footer>
-
   </main>
 
-  <script src="script.js"></script>
+  <script src="/static/script.js?v=3"></script>
 
 </body>
 </html>
