@@ -1,118 +1,93 @@
-const passwordInput = document.getElementById("pwdInput");
-const resultText = document.getElementById("result");
-const feedbackText = document.getElementById("feedback-text");
-const progressFill = document.getElementById("progress-bar");
-const percentText = document.getElementById("percent");
-const togglePassword = document.getElementById("togglePassword");
-const crackTimeText = document.getElementById("crack-time");
-let latestRequest = 0;
 
-togglePassword.addEventListener("click", function () {
-  const isVisible = passwordInput.type === "text";
-  passwordInput.type = isVisible ? "password" : "text";
-  togglePassword.textContent = isVisible ? "SHOW" : "HIDE";
-});
+const canvas = document.getElementById("canvas");
+const swatches = document.querySelectorAll(".swatch");
 
-async function checkStrength() {
-  const password = passwordInput.value;
-  const requestId = ++latestRequest;
+const fontToggle = document.getElementById("fontToggle");
+const fontLabel = document.getElementById("fontLabel");
+const typeAa = document.querySelector(".type-aa");
+const heroTitle = document.querySelector(".hero-title");
 
-  if (password.length === 0) {
-    resultText.textContent = "WAITING";
-    resultText.style.color = "#f0f0f0"; /* Soft White */
-    feedbackText.textContent = "Tips will appear here...";
-    crackTimeText.textContent = "";
-    progressFill.style.width = "0%";
-    progressFill.style.background = "#423738"; /* Iron Wash */
-    percentText.textContent = "0%";
-    return;
-  }
+const defaultAccent = "#7047ff";
 
+/* Change the violet accent using the color palette */
 
-  if (password.includes(" ")) {
-    resultText.textContent = "INVALID";
-    resultText.style.color = "#828384"; /* Steel */
-    feedbackText.textContent = "Spaces are not allowed in this password.";
-    crackTimeText.textContent = "";
-    progressFill.style.width = "0%";
-    progressFill.style.background = "#423738"; /* Iron Wash */
-    percentText.textContent = "—";
-    return;
-  }
+swatches.forEach((swatch) => {
+  swatch.addEventListener("click", () => {
+    const selectedColor = swatch.dataset.color;
 
-  try {
-    const response = await fetch("/predict", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        password: password
-      })
+    // Update the active color
+    swatches.forEach((item) => {
+      item.classList.remove("active");
+      item.removeAttribute("aria-pressed");
     });
 
-    if (!response.ok) {
-      throw new Error("Prediction request failed.");
-    }
-    const data = await response.json();
-    
-    if (requestId !== latestRequest) {
-      return;
-    }
-    const strengthLevels = {
-      0: {
-        label: "WEAK",
-        color: "#474747", /* Graphite*/
-        width: "33%",
-        percent: "33%"
-      },
-      1: {
-        label: "MEDIUM",
-        color: "#828384", /* Steel colour*/
-        width: "66%",
-        percent: "66%"
-      },
-      2: {
-        label: "STRONG",
-        color: "#af50ff", /* Violet colour*/
-        width: "100%",
-        percent: "100%"
-      }
-    };
+    swatch.classList.add("active");
+    swatch.setAttribute("aria-pressed", "true");
 
-    const level = strengthLevels[data.strength];
+    // Update the interface accent
+    canvas.style.setProperty(
+      "--current-accent",
+      selectedColor
+    );
 
-    if (!level) {
-      throw new Error("Invalid strength classification.");
-    }
-    
-    resultText.textContent = level.label;
-    resultText.style.color = level.color;
-    progressFill.style.width = level.width;
-    progressFill.style.background = level.color;
-    percentText.textContent = level.percent;
-    
-    feedbackText.textContent = data.feedback === "AI Analyzed" ? "" : (data.feedback || "");
-    
-    if (data.crack_time === "Instantly") {
-      crackTimeText.textContent = "Cracked instantly";
-    } else {
-      crackTimeText.textContent = `Estimated time to crack: ${data.crack_time}`;
-    }
+    // Update the title gradient
+    heroTitle.style.background = `
+      linear-gradient(
+        180deg,
+        ${selectedColor === "#0b0914" ? "#c7c0db" : selectedColor},
+        #bba8ff 65%,
+        #a38aff
+      )
+    `;
 
-  } catch (error) {
-    if (requestId !== latestRequest) {
-      return;
-    }
-    resultText.textContent = "ERROR";
-    resultText.style.color = "#828384"; /* Steel colour*/
-    feedbackText.textContent = "Please make sure your Python server is running.";
-    progressFill.style.width = "0%";
-    progressFill.style.background = "#423738";  /* Iron wash*/
-    percentText.textContent = "—";
+    heroTitle.style.webkitBackgroundClip = "text";
+    heroTitle.style.backgroundClip = "text";
+    heroTitle.style.webkitTextFillColor = "transparent";
+  });
+});
 
-    console.error("Password analysis error:", error);
+/* Switch the typography specimen */
+
+let alternateFont = false;
+
+fontToggle.addEventListener("click", () => {
+  alternateFont = !alternateFont;
+
+  if (alternateFont) {
+    typeAa.style.fontFamily = "Georgia, serif";
+    heroTitle.style.fontFamily = "Georgia, serif";
+
+    fontLabel.textContent = "SERIF";
+    fontToggle.setAttribute(
+      "aria-label",
+      "Switch to Geist typography"
+    );
+  } else {
+    typeAa.style.fontFamily = '"Geist", sans-serif';
+    heroTitle.style.fontFamily = '"Geist", sans-serif';
+
+    fontLabel.textContent = "GEIST";
+    fontToggle.setAttribute(
+      "aria-label",
+      "Switch to serif typography"
+    );
   }
+});
+
+/* Initialize the default palette selection */
+
+const initialSwatch = document.querySelector(
+  '.swatch[data-color="#7047ff"]'
+);
+
+if (initialSwatch) {
+  initialSwatch.setAttribute("aria-pressed", "true");
 }
 
-passwordInput.addEventListener("input", checkStrength);
+swatches.forEach((swatch) => {
+  if (!swatch.hasAttribute("aria-pressed")) {
+    swatch.setAttribute("aria-pressed", "false");
+  }
+});
+
+canvas.style.setProperty("--current-accent", defaultAccent);
