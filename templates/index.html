@@ -3,85 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#090909">
+  <title>Password Security | BCA Project</title>
   
-  <title>Password Strength Classification</title>
+  <!-- Fonts References -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&family=Lora:ital@1&display=swap" rel="stylesheet">
   
-  <meta name="title" content="Password Strength Classifier">
-  <meta name="description" content="Check your password strength and get instant feedback.">
-  <meta name="theme-color" content="#050b1d">
-  
-  <meta property="og:title" content="Password Strength Classifier">
-  <meta property="og:description" content="Check your password strength and get instant feedback.">
-  <meta property="og:image" content="https://password-strength-classification.vercel.app/static/images/preview.jpg">
-  <meta property="og:url" content="https://password-strength-classification.vercel.app/">
-  <meta property="og:type" content="website">
-  
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://password-strength-classification.vercel.app/static/images/preview.jpg">
-  
-  <meta property="twitter:url" content="https://password-strength-classification.vercel.app/">
-  <meta property="twitter:title" content="Password Strength Classifier">
-  <meta property="twitter:description" content="Check your password strength and get instant feedback.">
-  <meta property="twitter:image" content="https://moosik-henna.vercel.app/preview.jpg">
-
-  <title>Password Strength Classifier</title>
-    <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/style.css?v=20">
 </head>
+<body class="void-canvas">
 
-<body>
-  <div class="background-glow glow-top"></div>
-  <div class="background-glow glow-right"></div>
-  <img src="/static/images/neon-wave.png" class="wave-background" alt="" aria-hidden="true">
-  <header class="site-header">
-    <a href="#" class="brand">
-      <img src="/static/images/branch-shield.png" class="brand-icon" alt="">
-      <span class="brand-name">
-        Password <span class="purple">Strength</span> Classifier
-      </span>
-    </a>
-  </header>
-  <main class="main-content">
-    <section class="classifier-card">
-      <p class="eyebrow">
-        CHECK <span>•</span> ANALYZE <span>•</span> STAY SAFE
-      </p>
-      <h1>
-        Password<br>
-        <span class="purple">Strength</span> Classifier
+  <!-- Navigation Bar-->
+  <nav class="frosted-nav">
+    <div class="brand">pwd.<span class="brand-italic">security</span></div>
+    <div class="nav-links">
+      <a href="#" class="nav-item">Helena & Abel</a>
+      <a href="#" class="nav-item">BCA Minor Project</a>
+    </div>
+  </nav>
+
+  <main class="page-layout">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <h1 class="display-heading">
+        Your new <br>
+        <span class="display-italic">security baseline</span>
       </h1>
+      <p class="body-subhead">Enter your password below to check its strength against brute-force and dictionary attacks.</p>
+    </div>
 
-      <p class="intro">
-        Enter your password below to check its strength<br class="desktop-break">
-        and get instant feedback.
-      </p>
-      <div class="password-field">
-        <img src="/static/images/white-lock.png" class="input-lock" alt="">
-        
-        <input type="text" id="pwdInput" placeholder="Type a password..." autocomplete="new-password" spellcheck="false" aria-label="Type a password">
-        
-        <button type="button" id="togglePassword" class="eye-button" aria-label="Hide password">
-          <img src="/static/images/white-eye.png" alt="">
-        </button>
+    <div class="translucent-panel">
+      <p class="section-stamp">A N A L Y S I S</p>
+      
+      <div class="input-row">
+        <input type="text" id="pwdInput" placeholder="Type a password..." autocomplete="new-password" spellcheck="false">
+        <button type="button" id="togglePassword" class="ghost-button">SHOW</button>
       </div>
 
-      <div class="strength-row">
-        <div class="progress-container" role="progressbar" aria-label="Password strength" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-          <div id="progress-bar" class="progress-fill"></div>
-        </div>
-        <span id="percent">0%</span>
+      <div class="meter-track">
+        <div id="progress-bar" class="meter-fill"></div>
       </div>
-      <div class="tips-panel" aria-live="polite">
-        <img src="/static/images/purple-bulb.png" class="bulb-icon" alt="">
-        
-        <div class="tips-content">
-          <p id="result">Tips will appear here...</p>
-          <p id="feedback-text"></p>
-          <p id="crack-time" style="color: #a065ff; font-size: 13px; font-weight: 600; margin-top: 5px;"></p>
-        </div>
+      <span id="percent" style="display:none;">0%</span>
+      
+      <div class="feedback-block">
+        <p id="result" class="section-stamp result-stamp">WAITING</p>
+        <p id="feedback-text" class="body-text text-steel">Tips will appear here...</p>
+        <p id="crack-time" class="body-text text-signal"></p>
       </div>
-    </section>
-    <img src="/static/images/neon-lock.png" class="hero-lock" alt="Glowing blue and purple padlock">
+    </div>
+
   </main>
-  <script src="/static/script.js?v=2"></script>
+
+  <!-- Coordinate Footer -->
+  <footer class="coordinate-footer">
+    <div class="footer-left">
+      <span class="plus-icon">+</span>
+      <span>Amrita Vishwa Vidyapeetham</span>
+      <span>Minor Project</span>
+    </div>
+    <div class="footer-right">
+      <span>9.9312° N, 76.2673° E</span>
+      <span class="heart-icon">♥</span>
+    </div>
+  </footer>
+
+  <script src="/static/script.js?v=6"></script>
 </body>
 </html>
