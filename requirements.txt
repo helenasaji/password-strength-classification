@@ -2,3 +2,5 @@ pandas
 scikit-learn
 Flask
 joblib
+zxcvbn
+

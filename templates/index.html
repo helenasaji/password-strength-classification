@@ -1,136 +1,64 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Password Strength Classifier</title>
-
-  <meta name="title" content="Password Strength Classifier">
-  <meta name="description" content="Check your password strength and get instant feedback.">
+  <title>pwd.security | Analysis</title>
+  <meta name="description" content="Evaluate password entropy against brute-force and dictionary attacks.">
   <meta name="theme-color" content="#0b0914">
-
-  <meta property="og:title" content="Password Strength Classifier">
-  <meta property="og:description" content="Check your password strength and get instant feedback.">
-  <meta property="og:image" content="https://password-strength-classification.vercel.app/static/images/preview.jpg">
-  <meta property="og:url" content="https://password-strength-classification.vercel.app/">
-  <meta property="og:type" content="website">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://password-strength-classification.vercel.app/static/images/preview.jpg">
-  <meta property="twitter:url" content="https://password-strength-classification.vercel.app/">
-  <meta property="twitter:title" content="Password Strength Classifier">
-  <meta property="twitter:description" content="Check your password strength and get instant feedback.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="/static/style.css">
 </head>
-
 <body>
-
   <div class="background-glow glow-top"></div>
   <div class="background-glow glow-bottom"></div>
 
   <header class="site-header">
     <a href="#" class="brand">
       <span class="brand-icon" aria-hidden="true">◇</span>
-
-      <span class="brand-name">
-        Password <span class="purple">Strength</span> Classifier
-      </span>
+      <span class="brand-name">pwd.<span class="purple">security</span></span>
     </a>
-
-    <p class="header-tagline">
-      Stronger Passwords <span class="divider">|</span> Safer You
-    </p>
   </header>
 
   <main class="main-content">
-
     <section class="classifier-card">
-
-      <p class="eyebrow">
-        CHECK <span>•</span> ANALYZE <span>•</span> STAY SAFE
-      </p>
-
       <h1>
-        Password<br>
-        <span class="purple">Strength</span> Classifier
+        Security<br>
+        <span class="purple">Baseline</span>
       </h1>
-
       <p class="intro">
-        Enter your password below to check its strength<br class="desktop-break">
-        and get instant feedback.
+        Evaluate password entropy against brute-force<br class="desktop-break">
+        and dictionary patterns.
       </p>
 
       <div class="password-field">
-
         <span class="input-lock" aria-hidden="true">♙</span>
-
-        <input
-          type="password"
-          id="pwdInput"
-          placeholder="Type a password..."
-          autocomplete="new-password"
-          spellcheck="false"
-          aria-label="Type a password"
-        >
-
-        <button
-          type="button"
-          id="togglePassword"
-          class="eye-button"
-          aria-label="Show password"
-          aria-pressed="false"
-        >
+        <input type="text" id="pwdInput" placeholder="Enter string..." autocomplete="new-password" spellcheck="false" aria-label="Type a password">
+        <button type="button" id="togglePassword" class="eye-button" aria-label="Toggle password">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/>
             <circle cx="12" cy="12" r="2.8"/>
           </svg>
         </button>
-
       </div>
 
       <div class="strength-row">
-
-        <div
-          class="progress-container"
-          role="progressbar"
-          aria-label="Password strength"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          aria-valuenow="0"
-        >
+        <div class="progress-container" role="progressbar" aria-label="Strength" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
           <div id="progress-bar" class="progress-fill"></div>
         </div>
-
         <span id="percent">0%</span>
-
       </div>
 
       <div class="tips-panel" aria-live="polite">
-
         <span class="bulb-icon" aria-hidden="true">✧</span>
-
         <div class="tips-content">
-          <p id="result">Tips will appear here...</p>
+          <p id="result">WAITING</p>
           <p id="feedback-text"></p>
-
           <p id="crack-time" class="crack-time"></p>
         </div>
-
       </div>
-
     </section>
-
   </main>
-
-  <script src="/static/script.js?v=3"></script>
-
+  <script src="/static/script.js?v=4"></script>
 </body>
 </html>
