@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>pwd.security | Analysis</title>
+  <title>password strength classification</title>
   <meta name="description" content="Evaluate password entropy against brute-force and dictionary attacks.">
   <meta name="theme-color" content="#0b0914">
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -13,27 +13,20 @@
   <div class="background-glow glow-top"></div>
   <div class="background-glow glow-bottom"></div>
 
-  <header class="site-header">
-    <a href="#" class="brand">
-      <span class="brand-icon" aria-hidden="true">◇</span>
-      <span class="brand-name">pwd.<span class="purple">security</span></span>
-    </a>
-  </header>
-
   <main class="main-content">
     <section class="classifier-card">
       <h1>
-        Security<br>
-        <span class="purple">Baseline</span>
+        Password<br>
+        <span class="purple">Strength Checker</span>
       </h1>
       <p class="intro">
-        Evaluate password entropy against brute-force<br class="desktop-break">
-        and dictionary patterns.
+        Check you password <br class="desktop-break">
+        strength.
       </p>
 
       <div class="password-field">
         <span class="input-lock" aria-hidden="true">♙</span>
-        <input type="text" id="pwdInput" placeholder="Enter string..." autocomplete="new-password" spellcheck="false" aria-label="Type a password">
+        <input type="text" id="pwdInput" placeholder="Enter your password..." autocomplete="new-password" spellcheck="false" aria-label="Type a password">
         <button type="button" id="togglePassword" class="eye-button" aria-label="Toggle password">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/>
@@ -52,7 +45,7 @@
       <div class="tips-panel" aria-live="polite">
         <span class="bulb-icon" aria-hidden="true">✧</span>
         <div class="tips-content">
-          <p id="result">WAITING</p>
+          <p id="result">Tips</p>
           <p id="feedback-text"></p>
           <p id="crack-time" class="crack-time"></p>
         </div>
