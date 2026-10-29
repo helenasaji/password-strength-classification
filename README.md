@@ -1,10 +1,10 @@
 # AI Password Strength Classifier
-Final-Year BCA Minor Project for real-time password security analysis.
+Final-Year BCA Minor Project for Real-Time Password Security Analysis
 
 **Machine Learning-Powered Password Strength Classification Using Feature Engineering**
 
 ## Project Description
-The AI Password Strength Classifier is a machine learning-powered web application that analyzes password strength in real-time. The project applies custom mathematical feature-engineering pipelines, heuristic overrides, and a Logistic Regression model to identify weak, medium, and strong passwords through a modern Glassmorphism user interface.
+The AI Password Strength Classifier is a web application that analyzes passwords using Machine Learning. Customised mathematical feature engineering pipelines, heuristics and a Logistic Regression model are used to classify passwords into weak, medium and strong categories.
 
 ## Objectives
 * Grade passwords instantly as the user types.
