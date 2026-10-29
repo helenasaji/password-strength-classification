@@ -21,7 +21,7 @@
 html, body {
   min-height: 100vh;
   margin: 0;
-  background: linear-gradient(180deg, #240b45 0%, #0d041c 50%, #030108 100%);
+  background: url('/static/background.jpg') center center / cover no-repeat fixed;
   color: var(--text);
   font-family: var(--font-main);
   -webkit-font-smoothing: antialiased;
@@ -30,30 +30,41 @@ html, body {
   flex-direction: column;
 }
 
-.background-glow {
-  position: fixed;
-  z-index: -1;
-  pointer-events: none;
-  border-radius: 50%;
-  filter: blur(110px);
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  width: 100%;
+  min-height: 104px;
+  padding: 24px 5.2%;
 }
 
-.glow-top {
-  width: 480px;
-  height: 300px;
-  top: -240px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(112, 71, 255, 0.13);
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  color: var(--text);
+  text-decoration: none;
 }
 
-.glow-bottom {
-  width: 650px;
-  height: 240px;
-  left: 50%;
-  bottom: -220px;
-  transform: translateX(-50%);
-  background: rgba(112, 71, 255, 0.15);
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  color: var(--purple);
+  border: 1px solid rgba(182, 162, 255, 0.4);
+  border-radius: 12px;
+  font-size: 30px;
+  background: rgba(112, 71, 255, 0.06);
+  box-shadow: 0 0 24px rgba(112, 71, 255, 0.08);
+}
+
+.brand-name {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.6px;
 }
 
 .purple {
@@ -114,7 +125,7 @@ h1 {
   height: 69px;
   padding: 0 24px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50px; 
+  border-radius: 50px;
   background: rgba(0, 0, 0, 0.45); 
   transition: all 200ms ease;
 }
@@ -284,7 +295,7 @@ h1 {
   .password-field {
     height: 62px;
     padding: 0 16px;
-    border-radius: 15px;
+    border-radius: 50px;
   }
 
   .strength-row {
@@ -298,7 +309,7 @@ h1 {
   .tips-panel {
     min-height: 72px;
     padding: 15px 17px;
-    border-radius: 15px;
+    border-radius: 35px;
   }
 }
 
@@ -360,59 +371,4 @@ h1 {
   *, *::before, *::after {
     transition: none !important;
   }
-}
-
-/* Dense Violet Drops - Fades in, Glows Middle, Disappears Bottom */
-body::before, body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-repeat: repeat-y;
-  /* Mask: 0% invisible -> 35% max brightness -> 65% max brightness -> 100% invisible */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%);
-}
-
-body::before {
-  background-image: 
-    linear-gradient(180deg, transparent 70%, rgba(182, 162, 255, 0.8) 95%, rgba(255, 255, 255, 1) 100%),
-    linear-gradient(180deg, transparent 60%, rgba(255, 50, 150, 0.6) 95%, rgba(255, 200, 255, 1) 100%),
-    linear-gradient(180deg, transparent 80%, rgba(138, 43, 226, 0.7) 97%, rgba(220, 200, 255, 1) 100%),
-    linear-gradient(180deg, transparent 50%, rgba(182, 162, 255, 0.5) 96%, rgba(255, 255, 255, 0.9) 100%),
-    linear-gradient(180deg, transparent 75%, rgba(255, 100, 200, 0.6) 98%, rgba(255, 255, 255, 1) 100%),
-    linear-gradient(180deg, transparent 65%, rgba(100, 0, 255, 0.5) 95%, rgba(200, 150, 255, 1) 100%),
-    linear-gradient(180deg, transparent 55%, rgba(182, 162, 255, 0.7) 97%, rgba(255, 255, 255, 1) 100%);
-  background-size: 
-    1.5px 35vh, 2px 25vh, 1px 45vh, 2.5px 20vh, 1.5px 40vh, 1px 30vh, 2px 50vh;
-  background-position-x: 
-    8%, 22%, 35%, 48%, 62%, 78%, 92%;
-  animation: rain-drop 9s linear infinite;
-}
-
-body::after {
-  background-image: 
-    linear-gradient(180deg, transparent 70%, rgba(200, 50, 255, 0.6) 95%, rgba(255, 255, 255, 1) 100%),
-    linear-gradient(180deg, transparent 60%, rgba(150, 100, 255, 0.8) 95%, rgba(230, 230, 255, 1) 100%),
-    linear-gradient(180deg, transparent 80%, rgba(255, 80, 150, 0.5) 97%, rgba(255, 200, 255, 1) 100%),
-    linear-gradient(180deg, transparent 50%, rgba(100, 30, 200, 0.7) 96%, rgba(255, 255, 255, 0.9) 100%),
-    linear-gradient(180deg, transparent 75%, rgba(182, 162, 255, 0.6) 98%, rgba(255, 255, 255, 1) 100%),
-    linear-gradient(180deg, transparent 65%, rgba(220, 50, 150, 0.5) 95%, rgba(255, 150, 200, 1) 100%),
-    linear-gradient(180deg, transparent 55%, rgba(130, 50, 255, 0.7) 97%, rgba(255, 255, 255, 1) 100%);
-  background-size: 
-    2px 40vh, 1.5px 30vh, 2.5px 25vh, 1px 50vh, 2px 35vh, 1.5px 45vh, 1px 20vh;
-  background-position-x: 
-    15%, 28%, 42%, 55%, 72%, 85%, 98%;
-  animation: rain-drop-alt 12s linear infinite;
-}
-
-@keyframes rain-drop {
-  0% { background-position-y: -50vh, -30vh, -60vh, -20vh, -40vh, -70vh, -10vh; }
-  100% { background-position-y: 150vh, 170vh, 140vh, 180vh, 160vh, 130vh, 190vh; }
-}
-
-@keyframes rain-drop-alt {
-  0% { background-position-y: -40vh, -60vh, -20vh, -50vh, -30vh, -10vh, -70vh; }
-  100% { background-position-y: 160vh, 140vh, 180vh, 150vh, 170vh, 190vh, 130vh; }
 }
