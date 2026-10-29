@@ -74,7 +74,8 @@ html, body {
 }
 
 .classifier-card {
-  z-index: 1;
+  position: relative;
+  z-index: 10;
   width: 100%;
   max-width: 725px;
   padding: 48px 50px 42px;
@@ -358,13 +359,14 @@ h1 {
     transition: none !important;
   }
 }
+
 /* background */
 body::before, body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   background-repeat: repeat-y;
   -webkit-mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
