@@ -80,13 +80,14 @@ html, body {
   max-width: 725px;
   padding: 48px 50px 42px;
   text-align: center;
-  background: rgba(16, 13, 27, 0.35); 
+  background: rgba(16, 13, 27, 0.2); 
   border: 1px solid rgba(182, 162, 255, 0.3);
   border-radius: 30px;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 24px 80px rgba(0, 0, 0, 0.4), inset 0 0 40px rgba(182, 162, 255, 0.05);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
+
 
 h1 {
   margin: 0;
