@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
 :root {
   --background: #171326;
   --surface: #100d1b;
   --surface-soft: #151122;
-  --text: #f4f1ff;
-  --muted: #a09aaf;
-  --subtle: #6f687f;
+  --text: #ffffff;
+  --muted: #b3b3b3;
+  --subtle: #808080;
   --purple: #b6a2ff;
   --accent: #7047ff;
-  --border: rgba(180, 166, 214, 0.14);
-  --font-main: "Geist", sans-serif;
+  --border: rgba(255, 255, 255, 0.15);
+  --font-main: "Poppins", sans-serif;
   --font-mono: "Space Mono", monospace;
 }
 
@@ -80,14 +82,13 @@ html, body {
   max-width: 725px;
   padding: 48px 50px 42px;
   text-align: center;
-  background: rgba(16, 13, 27, 0.2); 
-  border: 1px solid rgba(182, 162, 255, 0.3);
-  border-radius: 30px;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 24px 80px rgba(0, 0, 0, 0.4), inset 0 0 40px rgba(182, 162, 255, 0.05);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.03); 
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 35px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 }
-
 
 h1 {
   margin: 0;
@@ -111,17 +112,17 @@ h1 {
   gap: 16px;
   width: 100%;
   height: 69px;
-  padding: 0 20px 0 24px;
-  border: 1px solid rgba(182, 162, 255, 0.42);
-  border-radius: 18px;
-  background: rgba(24, 19, 40, 0.8);
+  padding: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px; 
+  background: rgba(0, 0, 0, 0.45); 
   transition: all 200ms ease;
 }
 
 .password-field:focus-within {
-  border-color: var(--purple);
-  background: rgba(28, 21, 48, 0.95);
-  box-shadow: 0 0 0 3px rgba(112, 71, 255, 0.09), 0 0 28px rgba(112, 71, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
 }
 
 .input-lock {
@@ -218,11 +219,11 @@ h1 {
   gap: 18px;
   width: 100%;
   min-height: 80px;
-  padding: 18px 23px;
+  padding: 18px 25px;
   text-align: left;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: rgba(21, 17, 34, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px; 
+  background: rgba(0, 0, 0, 0.35); 
 }
 
 .bulb-icon {
