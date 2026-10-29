@@ -19,7 +19,7 @@
 html, body {
   min-height: 100vh;
   margin: 0;
-  background: var(--background);
+  background: linear-gradient(180deg, #240b45 0%, #0d041c 50%, #030108 100%);
   color: var(--text);
   font-family: var(--font-main);
   -webkit-font-smoothing: antialiased;
@@ -360,7 +360,6 @@ h1 {
   }
 }
 
-/* background */
 body::before, body::after {
   content: "";
   position: fixed;
@@ -368,36 +367,42 @@ body::before, body::after {
   pointer-events: none;
   z-index: 0;
   background-repeat: repeat-y;
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%);
 }
 
 body::before {
   background-image: 
-    linear-gradient(180deg, transparent 70%, rgba(182, 162, 255, 0.6) 95%, rgba(255, 255, 255, 1) 100%),
-    linear-gradient(180deg, transparent 80%, rgba(112, 71, 255, 0.5) 98%, rgba(255, 255, 255, 0.9) 100%),
-    linear-gradient(180deg, transparent 60%, rgba(210, 160, 255, 0.7) 95%, rgba(255, 255, 255, 1) 100%);
-  background-size: 2px 25vh, 1px 35vh, 2.5px 20vh;
-  background-position-x: 12%, 48%, 82%;
-  animation: digital-rain 2.2s linear infinite;
+    linear-gradient(180deg, transparent 60%, rgba(138, 43, 226, 0.3) 85%, rgba(182, 162, 255, 0.8) 97%, rgba(255, 255, 255, 1) 100%),
+    linear-gradient(180deg, transparent 70%, rgba(200, 0, 100, 0.2) 88%, rgba(255, 50, 150, 0.7) 98%, rgba(255, 200, 255, 1) 100%),
+    linear-gradient(180deg, transparent 50%, rgba(100, 0, 200, 0.2) 80%, rgba(150, 100, 255, 0.6) 97%, rgba(220, 200, 255, 1) 100%),
+    radial-gradient(circle, rgba(255, 100, 150, 0.9) 1px, transparent 3px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.9) 1.5px, transparent 4px);
+  
+  background-size: 2px 35vh, 1.5px 45vh, 3px 25vh, 15vw 15vh, 25vw 25vh;
+  background-position-x: 15%, 45%, 85%, 30%, 75%;
+  animation: slow-rain 16s linear infinite;
 }
 
 body::after {
   background-image: 
-    linear-gradient(180deg, transparent 75%, rgba(182, 162, 255, 0.6) 95%, rgba(255, 255, 255, 0.9) 100%),
-    linear-gradient(180deg, transparent 85%, rgba(112, 71, 255, 0.5) 97%, rgba(255, 255, 255, 0.8) 100%),
-    linear-gradient(180deg, transparent 65%, rgba(150, 100, 255, 0.6) 96%, rgba(255, 255, 255, 1) 100%);
-  background-size: 1.5px 30vh, 2px 40vh, 1px 25vh;
-  background-position-x: 28%, 65%, 92%;
-  animation: digital-rain-alt 3s linear infinite;
+    linear-gradient(180deg, transparent 65%, rgba(150, 20, 100, 0.3) 85%, rgba(255, 80, 150, 0.8) 97%, rgba(255, 220, 255, 1) 100%),
+    linear-gradient(180deg, transparent 75%, rgba(100, 30, 200, 0.3) 90%, rgba(160, 100, 255, 0.8) 98%, rgba(255, 255, 255, 1) 100%),
+    linear-gradient(180deg, transparent 55%, rgba(80, 20, 150, 0.2) 85%, rgba(140, 80, 255, 0.5) 98%, rgba(200, 180, 255, 1) 100%),
+    radial-gradient(circle, rgba(180, 100, 255, 0.9) 1.5px, transparent 3.5px),
+    radial-gradient(circle, rgba(255, 80, 120, 0.8) 1px, transparent 3px);
+
+  background-size: 1.5px 40vh, 2.5px 30vh, 1px 50vh, 20vw 20vh, 35vw 35vh;
+  background-position-x: 28%, 68%, 92%, 55%, 10%;
+  animation: slow-rain-alt 22s linear infinite;
 }
 
-@keyframes digital-rain {
-  0% { background-position-y: -25vh, -35vh, -20vh; }
-  100% { background-position-y: 125vh, 125vh, 125vh; }
+@keyframes slow-rain {
+  0% { background-position-y: -50vh, -50vh, -50vh, -20vh, -20vh; }
+  100% { background-position-y: 150vh, 150vh, 150vh, 120vh, 120vh; }
 }
 
-@keyframes digital-rain-alt {
-  0% { background-position-y: -30vh, -40vh, -25vh; }
-  100% { background-position-y: 125vh, 125vh, 125vh; }
+@keyframes slow-rain-alt {
+  0% { background-position-y: -50vh, -50vh, -50vh, -20vh, -20vh; }
+  100% { background-position-y: 150vh, 150vh, 150vh, 120vh, 120vh; }
 }
