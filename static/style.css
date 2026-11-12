@@ -19,7 +19,7 @@ html, body {
   min-height: 100vh;
   margin: 0;
   /* background image*/
-  background: var(--bg-page) url('/static/images/background.jpg') center center / cover no-repeat fixed;
+  background: var(--bg-page) url('/static/images/bg.jpg') center center / cover no-repeat fixed;
   color: var(--text-white);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
