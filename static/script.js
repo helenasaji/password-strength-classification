@@ -33,7 +33,7 @@ function updateProgress(width, color, percent) {
 
 function resetInterface() {
   resultText.textContent = "Tips will appear here...";
-  resultText.style.color = "#a09aaf";
+  resultText.style.color = "#ffffff";
   feedbackText.textContent = "";
   crackTimeText.textContent = "";
   updateProgress("0%", "linear-gradient(90deg, #b6a2ff, #7047ff)", "0%");
