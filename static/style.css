@@ -52,13 +52,12 @@ html, body {
 .welcome-panel {
   position: relative;
   flex: 1.1; 
-  background: url('/static/images/welcome-artwork.jpg') center center / cover no-repeat;
+  background: url('/static/images/welcome-artwork.jpg') center bottom / cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 45px 35px;
 }
-
 .welcome-panel::after {
   content: "";
   position: absolute;
