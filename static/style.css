@@ -541,7 +541,7 @@ label {
     bottom: -2px !important; 
     left: 0 !important;
     width: 100% !important;
-    height: 75px !important;
+    height: 55px !important;
     z-index: 10 !important;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100 L0 25 C 30 110, 70 -10, 100 50 L100 100 Z' fill='%23115E59'/%3E%3C/svg%3E") !important;
     background-size: 100% 100% !important;
