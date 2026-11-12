@@ -259,6 +259,267 @@ label {
   font-weight: 600;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+:root {
+  --bg-page: #F8FAFC;
+  --text-white: #FFFFFF;
+  --text-muted: #E2E8F0;
+  --accent-green: #A3E635; 
+  --border-light: rgba(255, 255, 255, 0.2);
+  --dark-green: #115E59; 
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: #F4F7F6;
+  color: var(--text-white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.classifier-card {
+  display: flex;
+  width: 100%;
+  max-width: 900px; 
+  min-height: 520px;
+  background: var(--dark-green);
+  border-radius: 40px; 
+  overflow: hidden; 
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+
+/* Left panel*/
+.welcome-panel {
+  position: relative;
+  flex: 1.1; 
+  background: url('/static/images/welcome-artwork.jpg') center bottom / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 45px 35px;
+}
+.welcome-panel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -1px; 
+  bottom: 0;
+  width: 120px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M100 0 C70 15, 60 35, 80 50 C100 65, 75 85, 100 100 Z' fill='%23115e59'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+.welcome-text {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-heading);
+  font-size: 32px;
+  color: var(--text-white);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* Right panel*/
+.form-panel {
+  flex: 0.9;
+  padding: 45px 45px;
+  display: flex;
+  flex-direction: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  margin: 0 0 8px 0;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  color: var(--text-white);
+  line-height: 1.2;
+}
+
+h1 .purple {
+  color: var(--accent-green);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.intro {
+  margin: 0 0 30px 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Natural-themed labels */
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.password-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 52px;
+  padding: 0 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-light);
+  border-radius: 50px;
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.password-field:focus-within {
+  border-color: var(--accent-green);
+  background: rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0 4px rgba(163, 230, 53, 0.1);
+}
+
+.input-lock {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  color: var(--text-white);
+  opacity: 0.85;
+}
+
+#pwdInput {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text-white);
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+
+#pwdInput::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.eye-button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.eye-button:hover {
+  color: var(--text-white);
+}
+
+.eye-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.strength-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.progress-container {
+  flex: 1;
+  height: 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 0;
+  height: 100%;
+  background: var(--accent-green);
+  border-radius: inherit;
+  transition: width 0.3s ease;
+}
+
+#percent {
+  min-width: 30px;
+  color: var(--accent-green);
+  font-weight: 600;
+  font-size: 13px;
+  text-align: right;
+}
+
+.tips-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+  border-radius: 18px;
+  text-align: left;
+}
+
+.bulb-icon {
+  margin-top: 1px;
+  opacity: 0.85;
+}
+
+#result {
+  margin: 0 0 2px 0;
+  color: var(--accent-green);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+#feedback-text {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.crack-time {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  color: var(--text-white);
+  font-weight: 600;
+}
+
 @media (max-width: 768px) {
   .classifier-card {
     flex-direction: column;
