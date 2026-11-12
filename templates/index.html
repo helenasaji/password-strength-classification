@@ -1,54 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>password strength classification</title>
   <meta name="description" content="Evaluate password entropy against brute-force and dictionary attacks.">
-  <meta name="theme-color" content="#0b0914">
+  <meta name="theme-color" content="#115E59">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/style.css?v=8">
+  <link rel="stylesheet" href="/static/style.css?v=13">
 </head>
 <body>
-  <div class="background-glow glow-top"></div>
-  <div class="background-glow glow-bottom"></div>
-
   <main class="main-content">
     <section class="classifier-card">
-      <h1>
-        Password<br>
-        <span class="purple">Strength Checker</span>
-      </h1>
-      <p class="intro">
-        Check your Password <br class="desktop-break">
-        Strength.
-      </p>
-
-      <div class="password-field">
-        <span class="input-lock" aria-hidden="true"><img src="/static/images/white-lock.png" alt="" width="24" height="24"></span>
-        <input type="text" id="pwdInput" placeholder="Enter your password..." autocomplete="new-password" spellcheck="false" aria-label="Type a password">
-        <button type="button" id="togglePassword" class="eye-button" aria-label="Toggle password">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/>
-            <circle cx="12" cy="12" r="2.8"/>
-          </svg>
-        </button>
+      
+      <div class="welcome-panel">
+        <div class="welcome-text">WELCOME</div>
       </div>
-
-      <div class="strength-row">
-        <div class="progress-container" role="progressbar" aria-label="Strength" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-          <div id="progress-bar" class="progress-fill"></div>
+      <div class="form-panel">
+        <h1>Password <span class="purple">Strength Checker</span></h1>
+        <p class="intro">Check your Password Strength.</p>
+        
+        <label for="pwdInput">Password</label>
+        
+        <div class="password-field">
+          <span class="input-lock" aria-hidden="true"><img src="/static/images/white-lock.png" alt="" width="24" height="24"></span>
+          <input type="text" id="pwdInput" placeholder="Enter your password..." autocomplete="new-password" spellcheck="false" aria-label="Type a password">
+          <button type="button" id="togglePassword" class="eye-button" aria-label="Toggle password">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"/>
+              <circle cx="12" cy="12" r="2.8"/>
+            </svg>
+          </button>
         </div>
-        <span id="percent">0%</span>
-      </div>
-
-      <div class="tips-panel" aria-live="polite">
-        <span class="bulb-icon" aria-hidden="true"><img src="/static/images/purple-bulb.png" alt="" width="30" height="34"></span>
-        <div class="tips-content">
-          <p id="result">Tips</p>
-          <p id="feedback-text"></p>
-          <p id="crack-time" class="crack-time"></p>
+        <div class="strength-row">
+          <div class="progress-container" role="progressbar" aria-label="Strength" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="progress-bar" class="progress-fill"></div>
+          </div>
+          <span id="percent">0%</span>
         </div>
+
+        <div class="tips-panel" aria-live="polite">
+          <span class="bulb-icon" aria-hidden="true"><img src="/static/images/purple-bulb.png" alt="" width="30" height="34"></span>
+          <div class="tips-content">
+            <p id="result">Tips</p>
+            <p id="feedback-text"></p>
+            <p id="crack-time" class="crack-time"></p>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
