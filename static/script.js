@@ -135,3 +135,15 @@ async function checkStrength() {
 }
 
 passwordInput.addEventListener("input", checkStrength);
+const scrollBtn = document.getElementById("scroll-btn");
+const targetSection = document.getElementById("classifier-section");
+
+if (scrollBtn && targetSection) {
+  scrollBtn.addEventListener("click", () => {
+    targetSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  });
+}
+
