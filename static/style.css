@@ -267,7 +267,7 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, var(--dark-green) 0%, #042f2e 100%);
+  background: transparent;
   position: relative;
 }
 
@@ -279,7 +279,7 @@ label {
 .hero-title {
   font-family: var(--font-heading);
   font-size: clamp(3rem, 8vw, 6rem);
-  color: var(--text-white);
+  color: var(--dark-green);
   line-height: 1.1;
   margin: 0;
   letter-spacing: -2px;
@@ -292,7 +292,7 @@ label {
 }
 
 .hero-subtitle {
-  color: var(--text-muted);
+  color: #475569;
   font-size: clamp(14px, 2vw, 18px);
   max-width: 500px;
   margin: 20px auto 30px;
@@ -354,5 +354,4 @@ label {
   .form-panel {
     padding: 20px 30px 35px;
   }
-}
 }
