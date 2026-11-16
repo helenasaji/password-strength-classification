@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
 
 :root {
-  --bg-page: #f5e8dd; 
+  --bg-page: #44a1a0; 
   --text-white: #f5e8dd; 
   --text-muted: rgba(245, 232, 221, 0.7); 
   --accent-color: #78cdd7; 
-  --accent-secondary: #44a1a0; 
   --border-light: rgba(245, 232, 221, 0.2); 
   --main-theme: #0d5c63; 
   --font-heading: 'Playfair Display', serif;
@@ -46,7 +45,7 @@ html, body {
   background: var(--main-theme);
   border-radius: 40px; 
   overflow: hidden; 
-  box-shadow: 0 25px 50px -12px rgba(13, 92, 99, 0.4); 
+  box-shadow: 0 25px 50px -12px rgba(13, 92, 99, 0.6); 
 }
 
 /* Left panel */
@@ -311,13 +310,13 @@ label {
 }
 
 .hero-title .hero-highlight {
-  color: var(--accent-secondary); 
+  color: var(--text-white); 
   font-style: italic;
   display: block;
 }
 
 .hero-subtitle {
-  color: var(--main-theme);
+  color: var(--text-white);
   font-size: clamp(14px, 2vw, 18px);
   max-width: 500px;
   margin: 20px auto 30px;
@@ -326,7 +325,7 @@ label {
 
 .hero-btn {
   background-color: var(--main-theme);
-  color: var(--bg-page);
+  color: var(--text-white);
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 16px;
@@ -341,7 +340,8 @@ label {
 .hero-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(13, 92, 99, 0.5);
-  background-color: var(--accent-secondary); 
+  background-color: var(--text-white); 
+  color: var(--main-theme);
 }
 
 @keyframes fadeIn {
