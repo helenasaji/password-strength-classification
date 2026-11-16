@@ -334,13 +334,14 @@ label {
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 0 20px rgba(245, 232, 221, 0.5); 
 }
 
 .hero-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 35px rgba(245, 232, 221, 0.9);
   background-color: var(--accent-color); 
+  color: var(--bg-page);
 }
 
 @keyframes fadeIn {
