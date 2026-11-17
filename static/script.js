@@ -1,42 +1,10 @@
-const passwordInput = document.getElementById("pwdInput");
-const resultText = document.getElementById("result");
-const feedbackText = document.getElementById("feedback-text");
-const progressFill = document.getElementById("progress-bar");
-const percentText = document.getElementById("percent");
-const progressContainer = document.querySelector(".progress-container");
-const togglePassword = document.getElementById("togglePassword");
-const crackTimeText = document.getElementById("crack-time");
-
-let latestRequest = 0;
-
-togglePassword.addEventListener("click", function () {
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-    togglePassword.setAttribute("aria-label", "Hide password");
-    togglePassword.setAttribute("aria-pressed", "true");
-  } else {
-    passwordInput.type = "password";
-    togglePassword.setAttribute("aria-label", "Show password");
-    togglePassword.setAttribute("aria-pressed", "false");
-  }
-});
-
-function updateProgress(width, color, percent) {
-  progressFill.style.width = width;
-  progressFill.style.background = color;
-  percentText.textContent = percent;
-  progressContainer.setAttribute(
-    "aria-valuenow",
-    percent === "—" ? "0" : percent.replace("%", "")
-  );
-}
-
 function resetInterface() {
-  resultText.textContent = "Tips will appear here...";
-  resultText.style.color = "#ffffff";
+  resultText.textContent = "Tips";
+  resultText.style.color = "var(--text-white)";
+  resultText.style.backgroundColor = "transparent"; 
   feedbackText.textContent = "";
   crackTimeText.textContent = "";
-  updateProgress("0%", "linear-gradient(90deg, #b6a2ff, #7047ff)", "0%");
+  updateProgress("0%", "var(--accent-color)", "0%");
 }
 
 async function checkStrength() {
@@ -49,8 +17,9 @@ async function checkStrength() {
   }
 
   if (password.includes(" ")) {
-    resultText.textContent = "⚠️ Invalid Input";
+    resultText.textContent = "Invalid Input";
     resultText.style.color = "#ff626f";
+    resultText.style.backgroundColor = "rgba(255, 98, 111, 0.15)";
     feedbackText.textContent = "Spaces are not allowed in this password.";
     crackTimeText.textContent = "";
     updateProgress("0%", "#ff626f", "—");
@@ -80,20 +49,23 @@ async function checkStrength() {
 
     const strengthLevels = {
       0: {
-        label: "🔴 Weak",
+        label: "Weak",
         color: "#ff626f",
+        bgColor: "rgba(255, 98, 111, 0.15)", 
         width: "33%",
         percent: "33%"
       },
       1: {
-        label: "🟡 Medium",
+        label: "Medium",
         color: "#ffb84d",
+        bgColor: "rgba(255, 184, 77, 0.15)", 
         width: "66%",
         percent: "66%"
       },
       2: {
-        label: "🟢 Strong",
+        label: "Strong",
         color: "#22c55e",
+        bgColor: "rgba(34, 197, 94, 0.15)", 
         width: "100%",
         percent: "100%"
       }
@@ -107,6 +79,7 @@ async function checkStrength() {
 
     resultText.textContent = level.label;
     resultText.style.color = level.color;
+    resultText.style.backgroundColor = level.bgColor;
 
     updateProgress(level.width, level.color, level.percent);
 
@@ -125,25 +98,12 @@ async function checkStrength() {
       return;
     }
 
-    resultText.textContent = "Unable to analyze right now";
+    resultText.textContent = "Unable to analyze";
     resultText.style.color = "#ffb84d";
+    resultText.style.backgroundColor = "rgba(255, 184, 77, 0.15)";
     feedbackText.textContent = "Please make sure your Python server is running and the /predict endpoint is available.";
     crackTimeText.textContent = "";
     updateProgress("0%", "#ffb84d", "—");
     console.error("Password analysis error:", error);
   }
 }
-
-passwordInput.addEventListener("input", checkStrength);
-const scrollBtn = document.getElementById("scroll-btn");
-const targetSection = document.getElementById("classifier-section");
-
-if (scrollBtn && targetSection) {
-  scrollBtn.addEventListener("click", () => {
-    targetSection.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  });
-}
-
