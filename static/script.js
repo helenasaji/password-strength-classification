@@ -6,6 +6,7 @@ const percentText = document.getElementById("percent");
 const progressContainer = document.querySelector(".progress-container");
 const togglePassword = document.getElementById("togglePassword");
 const crackTimeText = document.getElementById("crack-time");
+const shieldGraphic = document.querySelector(".shield-foreground-img");
 
 let latestRequest = 0;
 
@@ -53,6 +54,9 @@ function resetInterface() {
   crackTimeText.textContent = "";
   updateProgress("0%", "var(--accent-color)", "0%");
   updateChecklist("");
+  if (shieldGraphic) {
+    shieldGraphic.classList.remove("shield-strong-glow"); 
+  }
 }
 
 function getSmartTips(password, strength) {
@@ -78,7 +82,7 @@ function getSmartTips(password, strength) {
     tips.push("Try a longer, unique passphrase.");
   } 
   else if (strength === 1) {
-    if (password.length < 12) {
+    if (password.length < 8) {
       tips.push("Consider increasing the password length.");
     }
     if (/[@$!034]/.test(password)) {
@@ -112,6 +116,7 @@ async function checkStrength() {
     feedbackText.innerHTML = "Spaces are not allowed in this password.";
     crackTimeText.textContent = "";
     updateProgress("0%", "#ff626f", "—");
+    if (shieldGraphic) shieldGraphic.classList.remove("shield-strong-glow");
     return;
   }
 
@@ -135,17 +140,20 @@ async function checkStrength() {
     if (requestId !== latestRequest) {
       return;
     }
+
     if (/^[a-zA-Z]+[@#!$%^&*][0-9]+$/.test(password) || password.toLowerCase().includes('name')) {
       data.strength = 0;
     }
-  
+
     const meetsAllRequirements = password.length >= 8 && 
                                  /(?=.*[a-z])(?=.*[A-Z])/.test(password) && 
                                  /\d/.test(password) && 
                                  /[^A-Za-z0-9]/.test(password);
                                  
-    if (data.strength === 2 && !meetsAllRequirements) {
-      data.strength = 1; 
+    if (meetsAllRequirements) {
+      data.strength = 2;
+    } else if (data.strength === 2 && !meetsAllRequirements) {
+      data.strength = 1;
     }
 
     const strengthLevels = {
@@ -185,6 +193,14 @@ async function checkStrength() {
 
     updateProgress(level.width, level.color, level.percent);
 
+    if (shieldGraphic) {
+      if (data.strength === 2) {
+        shieldGraphic.classList.add("shield-strong-glow");
+      } else {
+        shieldGraphic.classList.remove("shield-strong-glow");
+      }
+    }
+
     feedbackText.innerHTML = getSmartTips(password, data.strength);
 
     if (data.crack_time === "Instantly") {
@@ -206,6 +222,7 @@ async function checkStrength() {
     feedbackText.innerHTML = "Please make sure your Python server is running and the /predict endpoint is available.";
     crackTimeText.textContent = "";
     updateProgress("0%", "#ffb84d", "—");
+    if (shieldGraphic) shieldGraphic.classList.remove("shield-strong-glow");
     console.error("Password analysis error:", error);
   }
 }
