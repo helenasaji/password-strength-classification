@@ -139,7 +139,7 @@ async function checkStrength() {
     }
 
     resultText.textContent = level.label;
-    resultText.style.color = level.color;
+    resultText.style.color = level.textColor || level.color;
     resultText.style.backgroundColor = level.bgColor;
 
     updateProgress(level.width, level.color, level.percent);
