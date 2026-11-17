@@ -27,8 +27,6 @@ html, body {
   display: flex;
   flex-direction: column;
 }
-
-/* User's Custom Ambient Lighting */
 body {
   background-image:
     radial-gradient(
@@ -94,7 +92,6 @@ body {
   pointer-events: none;
 }
 
-/* The curvy wave divider */
 .welcome-panel::after {
   content: "";
   position: absolute;
@@ -271,6 +268,48 @@ label {
   text-align: right;
 }
 
+.password-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.password-checklist li {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.password-checklist li::before {
+  content: '✖';
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(13, 92, 99, 0.08);
+  color: rgba(13, 92, 99, 0.6);
+  font-size: 10px;
+  transition: all 0.3s ease;
+}
+
+.password-checklist li.valid {
+  color: var(--text-white);
+  font-weight: 600;
+}
+
+.password-checklist li.valid::before {
+  content: '✔';
+  background: rgba(34, 197, 94, 0.15); 
+  color: #22c55e; 
+}
+
 .tips-panel {
   display: flex;
   align-items: flex-start;
@@ -310,6 +349,35 @@ label {
   font-size: 12px;
   color: var(--text-muted);
   line-height: 1.4;
+}
+
+#feedback-text ul {
+  margin: 8px 0 0 0;
+  padding-left: 20px;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+#feedback-text li {
+  margin-bottom: 6px;
+}
+
+#feedback-text code {
+  background: rgba(13, 92, 99, 0.1); 
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--text-white);
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.weak-heading {
+  color: #ff626f; 
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 4px;
+  display: block;
 }
 
 .crack-time {
@@ -409,6 +477,9 @@ label {
   }
   .form-panel {
     padding: 20px 30px 35px;
+  }
+  .password-checklist {
+    grid-template-columns: 1fr;
   }
 }
 
