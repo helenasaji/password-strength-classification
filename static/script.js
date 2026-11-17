@@ -33,14 +33,14 @@ function updateProgress(width, color, percent) {
 
 function updateChecklist(password) {
   const lengthCheck = document.getElementById("check-length");
-  const upperCheck = document.getElementById("check-upper");
+  const checkCase = document.getElementById("check-case");
   const numberCheck = document.getElementById("check-number");
   const symbolCheck = document.getElementById("check-symbol");
 
-  if(lengthCheck && upperCheck && numberCheck && symbolCheck) {
+  if(lengthCheck && checkCase && numberCheck && symbolCheck) {
     password.length >= 8 ? lengthCheck.classList.add("valid") : lengthCheck.classList.remove("valid");
-    /[A-Z]/.test(password) ? upperCheck.classList.add("valid") : upperCheck.classList.remove("valid");
-    /[0-9]/.test(password) ? numberCheck.classList.add("valid") : numberCheck.classList.remove("valid");
+    (/(?=.*[a-z])(?=.*[A-Z])/.test(password)) ? checkCase.classList.add("valid") : checkCase.classList.remove("valid");
+    /\d/.test(password) ? numberCheck.classList.add("valid") : numberCheck.classList.remove("valid");
     /[^A-Za-z0-9]/.test(password) ? symbolCheck.classList.add("valid") : symbolCheck.classList.remove("valid");
   }
 }
