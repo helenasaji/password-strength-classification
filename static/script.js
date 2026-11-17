@@ -31,39 +31,69 @@ function updateProgress(width, color, percent) {
   );
 }
 
+function updateChecklist(password) {
+  const lengthCheck = document.getElementById("check-length");
+  const upperCheck = document.getElementById("check-upper");
+  const numberCheck = document.getElementById("check-number");
+  const symbolCheck = document.getElementById("check-symbol");
+
+  if(lengthCheck && upperCheck && numberCheck && symbolCheck) {
+    password.length >= 8 ? lengthCheck.classList.add("valid") : lengthCheck.classList.remove("valid");
+    /[A-Z]/.test(password) ? upperCheck.classList.add("valid") : upperCheck.classList.remove("valid");
+    /[0-9]/.test(password) ? numberCheck.classList.add("valid") : numberCheck.classList.remove("valid");
+    /[^A-Za-z0-9]/.test(password) ? symbolCheck.classList.add("valid") : symbolCheck.classList.remove("valid");
+  }
+}
+
 function resetInterface() {
   resultText.textContent = "Tips";
   resultText.style.color = "var(--text-white)";
   resultText.style.backgroundColor = "transparent"; 
-  feedbackText.textContent = "Start typing to see security tips.";
+  feedbackText.innerHTML = "Start typing to see security tips.";
   crackTimeText.textContent = "";
   updateProgress("0%", "var(--accent-color)", "0%");
+  updateChecklist("");
 }
-function getSmartTips(password) {
-  if (password.length === 0) return "";
+
+function getSmartTips(password, strength) {
+  if (password.length === 0) return "Start typing to see security tips.";
   
   let tips = [];
-  
-  if (password.length < 8) {
-    tips.push("Increase the length to at least 8 characters.");
-  } else if (/^[a-zA-Z]+$/.test(password)) {
-    tips.push("Add numbers and symbols to make it stronger.");
-  } else if (/^[0-9]+$/.test(password)) {
-    tips.push("Add letters and symbols. Numbers alone are easy to guess.");
+  let heading = "";
+
+  if (strength === 0) {
+    heading = `<span class="weak-heading">Too predictable!</span>`;
+    
+    if (/(0123|1234|2345|3456|4567|5678|6789|abcd|qwerty)/i.test(password)) {
+      tips.push("Avoid predictable sequences such as <code>123456</code>.");
+    }
+    if (/(.)\1{2,}/.test(password)) {
+      tips.push("Avoid predictable repetitions.");
+    }
+    if (/^[a-zA-Z]+$/.test(password) || /^[0-9]+$/.test(password)) {
+      tips.push("Avoid common dictionary words.");
+    }
+    
+    tips.push("Avoid using your birthday or personal information.");
+    tips.push("Try a longer, unique passphrase.");
+  } 
+  else if (strength === 1) {
+    if (password.length < 12) {
+      tips.push("Consider increasing the password length.");
+    }
+    if (/[@$!034]/.test(password)) {
+      tips.push("Avoid predictable substitutions such as <code>@</code> for <code>a</code>.");
+    }
+    tips.push("Use several unrelated words to make a longer passphrase.");
+  } 
+  else if (strength === 2) {
+    tips.push("Good! Your password is harder to guess.");
+    tips.push("Avoid reusing it on other websites.");
+    tips.push("Consider storing it in a trusted password manager.");
   }
-  
-  if (/(.)\1{2,}/.test(password)) {
-    tips.push("Avoid predictable repetitions (e.g., 'aaa').");
-  }
-  if (/12345|qwerty|password|abcde/i.test(password)) {
-    tips.push("Avoid common sequences or dictionary words.");
-  }
-  
-  if (tips.length > 0) {
-    return "💡 Tip: " + tips[0];
-  } else {
-    return "✅ Good! Your password is harder to guess.";
-  }
+
+  let tipsHtml = `<ul>` + tips.map(tip => `<li>${tip}</li>`).join('') + `</ul>`;
+  return heading + tipsHtml;
 }
 
 async function checkStrength() {
@@ -79,7 +109,7 @@ async function checkStrength() {
     resultText.textContent = "Invalid Input";
     resultText.style.color = "#ff626f";
     resultText.style.backgroundColor = "rgba(255, 98, 111, 0.15)";
-    feedbackText.textContent = "Spaces are not allowed in this password.";
+    feedbackText.innerHTML = "Spaces are not allowed in this password.";
     crackTimeText.textContent = "";
     updateProgress("0%", "#ff626f", "—");
     return;
@@ -122,7 +152,6 @@ async function checkStrength() {
         width: "66%",
         percent: "66%"
       },
-
       2: {
         label: "Strong",
         color: "#22c55e",
@@ -144,7 +173,7 @@ async function checkStrength() {
 
     updateProgress(level.width, level.color, level.percent);
 
-    feedbackText.textContent = getSmartTips(password);
+    feedbackText.innerHTML = getSmartTips(password, data.strength);
 
     if (data.crack_time === "Instantly") {
       crackTimeText.textContent = "Cracked instantly";
@@ -162,14 +191,17 @@ async function checkStrength() {
     resultText.textContent = "Unable to analyze";
     resultText.style.color = "#ffb84d";
     resultText.style.backgroundColor = "rgba(255, 184, 77, 0.15)";
-    feedbackText.textContent = "Please make sure your Python server is running and the /predict endpoint is available.";
+    feedbackText.innerHTML = "Please make sure your Python server is running and the /predict endpoint is available.";
     crackTimeText.textContent = "";
     updateProgress("0%", "#ffb84d", "—");
     console.error("Password analysis error:", error);
   }
 }
 
-passwordInput.addEventListener("input", checkStrength);
+passwordInput.addEventListener("input", function() {
+  checkStrength();
+  updateChecklist(passwordInput.value);
+});
 
 const scrollBtn = document.getElementById("scroll-btn");
 const targetSection = document.getElementById("classifier-section");
