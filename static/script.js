@@ -136,6 +136,13 @@ async function checkStrength() {
       return;
     }
 
+    // --- FRONTEND SECURITY OVERRIDE ---
+    // Instantly downgrade common patterns (e.g., word + symbol + number like name@123) to Weak (0)
+    if (/^[a-zA-Z]+[@#!$%^&*][0-9]+$/.test(password) || password.toLowerCase().includes('name')) {
+      data.strength = 0;
+    }
+    // ----------------------------------
+
     const strengthLevels = {
       0: {
         label: "Weak",
