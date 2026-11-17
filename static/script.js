@@ -116,11 +116,13 @@ async function checkStrength() {
       },
       1: {
         label: "Medium",
-        color: "#ffb84d",
-        bgColor: "rgba(255, 184, 77, 0.15)", 
+        color: "#ffb84d", 
+        textColor: "#f97316", 
+        bgColor: "rgba(249, 115, 22, 0.15)", 
         width: "66%",
         percent: "66%"
       },
+
       2: {
         label: "Strong",
         color: "#22c55e",
