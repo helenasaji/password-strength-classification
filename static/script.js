@@ -1,10 +1,69 @@
+const passwordInput = document.getElementById("pwdInput");
+const resultText = document.getElementById("result");
+const feedbackText = document.getElementById("feedback-text");
+const progressFill = document.getElementById("progress-bar");
+const percentText = document.getElementById("percent");
+const progressContainer = document.querySelector(".progress-container");
+const togglePassword = document.getElementById("togglePassword");
+const crackTimeText = document.getElementById("crack-time");
+
+let latestRequest = 0;
+
+togglePassword.addEventListener("click", function () {
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    togglePassword.setAttribute("aria-label", "Hide password");
+    togglePassword.setAttribute("aria-pressed", "true");
+  } else {
+    passwordInput.type = "password";
+    togglePassword.setAttribute("aria-label", "Show password");
+    togglePassword.setAttribute("aria-pressed", "false");
+  }
+});
+
+function updateProgress(width, color, percent) {
+  progressFill.style.width = width;
+  progressFill.style.background = color;
+  percentText.textContent = percent;
+  progressContainer.setAttribute(
+    "aria-valuenow",
+    percent === "—" ? "0" : percent.replace("%", "")
+  );
+}
+
 function resetInterface() {
   resultText.textContent = "Tips";
   resultText.style.color = "var(--text-white)";
   resultText.style.backgroundColor = "transparent"; 
-  feedbackText.textContent = "";
+  feedbackText.textContent = "Start typing to see security tips.";
   crackTimeText.textContent = "";
   updateProgress("0%", "var(--accent-color)", "0%");
+}
+function getSmartTips(password) {
+  if (password.length === 0) return "";
+  
+  let tips = [];
+  
+  if (password.length < 8) {
+    tips.push("Increase the length to at least 8 characters.");
+  } else if (/^[a-zA-Z]+$/.test(password)) {
+    tips.push("Add numbers and symbols to make it stronger.");
+  } else if (/^[0-9]+$/.test(password)) {
+    tips.push("Add letters and symbols. Numbers alone are easy to guess.");
+  }
+  
+  if (/(.)\1{2,}/.test(password)) {
+    tips.push("Avoid predictable repetitions (e.g., 'aaa').");
+  }
+  if (/12345|qwerty|password|abcde/i.test(password)) {
+    tips.push("Avoid common sequences or dictionary words.");
+  }
+  
+  if (tips.length > 0) {
+    return "💡 Tip: " + tips[0];
+  } else {
+    return "✅ Good! Your password is harder to guess.";
+  }
 }
 
 async function checkStrength() {
@@ -83,7 +142,7 @@ async function checkStrength() {
 
     updateProgress(level.width, level.color, level.percent);
 
-    feedbackText.textContent = data.feedback === "AI Analyzed" ? "" : (data.feedback || "");
+    feedbackText.textContent = getSmartTips(password);
 
     if (data.crack_time === "Instantly") {
       crackTimeText.textContent = "Cracked instantly";
@@ -106,4 +165,18 @@ async function checkStrength() {
     updateProgress("0%", "#ffb84d", "—");
     console.error("Password analysis error:", error);
   }
+}
+
+passwordInput.addEventListener("input", checkStrength);
+
+const scrollBtn = document.getElementById("scroll-btn");
+const targetSection = document.getElementById("classifier-section");
+
+if (scrollBtn && targetSection) {
+  scrollBtn.addEventListener("click", () => {
+    targetSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  });
 }
