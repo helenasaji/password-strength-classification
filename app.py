@@ -13,7 +13,7 @@ def predict():
     password = data.get('password', '')
 
     if not password:
-        return jsonify({'strength': 0, 'crack_time': '', 'feedback': ''})
+        return jsonify({'strength': 0, 'crack_time': ''})
 
     results = zxcvbn(password)
     
@@ -26,21 +26,10 @@ def predict():
         strength_score = 2
 
     crack_time = results['crack_times_display']['offline_fast_hashing_1e10_per_second']
-    
-    warning = results['feedback']['warning']
-    suggestions = results['feedback']['suggestions']
-    
-    if warning:
-        feedback_text = warning
-    elif suggestions:
-        feedback_text = suggestions[0]
-    else:
-        feedback_text = "Looking good"
 
     return jsonify({
         'strength': strength_score,
-        'crack_time': crack_time,
-        'feedback': feedback_text
+        'crack_time': crack_time
     })
 
 if __name__ == '__main__':
