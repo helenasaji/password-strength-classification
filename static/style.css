@@ -401,3 +401,33 @@ label {
     padding: 20px 30px 35px;
   }
 }
+body {
+    background-image:
+      radial-gradient(
+        ellipse 55% 38% at 50% 30%,
+        rgba(68, 161, 160, 0.20) 0%,
+        rgba(68, 161, 160, 0.10) 40%,
+        transparent 75%
+      ),
+      radial-gradient(
+        ellipse 45% 35% at 85% 85%,
+        rgba(120, 205, 215, 0.07) 0%,
+        transparent 75%
+      );
+  background-repeat: no-repeat;
+}
+@media (max-width: 600px) {
+  body {
+    background-image:
+      radial-gradient(
+        ellipse 85% 28% at 50% 24%,
+        rgba(68, 161, 160, 0.19) 0%,
+        transparent 75%
+      ),
+      radial-gradient(
+        ellipse 75% 30% at 50% 85%,
+        rgba(120, 205, 215, 0.06) 0%,
+        transparent 75%
+      );
+  }
+}
