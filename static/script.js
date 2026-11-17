@@ -135,13 +135,18 @@ async function checkStrength() {
     if (requestId !== latestRequest) {
       return;
     }
-
-    // --- FRONTEND SECURITY OVERRIDE ---
-    // Instantly downgrade common patterns (e.g., word + symbol + number like name@123) to Weak (0)
     if (/^[a-zA-Z]+[@#!$%^&*][0-9]+$/.test(password) || password.toLowerCase().includes('name')) {
       data.strength = 0;
     }
-    // ----------------------------------
+  
+    const meetsAllRequirements = password.length >= 8 && 
+                                 /(?=.*[a-z])(?=.*[A-Z])/.test(password) && 
+                                 /\d/.test(password) && 
+                                 /[^A-Za-z0-9]/.test(password);
+                                 
+    if (data.strength === 2 && !meetsAllRequirements) {
+      data.strength = 1; 
+    }
 
     const strengthLevels = {
       0: {
